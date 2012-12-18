@@ -1,0 +1,33 @@
+[server]
+
+; -----------------------------
+; MemSQL configuration options:
+; -----------------------------
+
+; Possible values: on, off
+; If durability is off, no data is saved to disk, but database
+; and table definitions are persisted.
+durability          = off
+
+; The transaction buffer is a per-database, in-memory buffer of the
+; transaction log. By default, it is asynchronously flushed to disk.
+; You can set it to 0 for synchronous durability (transactions are
+; flushed on commit). A positive value sets the size of the buffer.
+transaction-buffer  = 128m
+
+; snapshot-trigger-size indicates the size of the transaction
+; log at which MemSQL starts a snapshot and truncates the log
+snapshot-trigger-size = 2g
+
+
+; ---------------------------------
+; MySQL-style configuration options
+; ---------------------------------
+
+basedir             = .
+tmpdir              = .
+lc-messages-dir     = ./share
+socket              = memsql.sock
+port                = 3306
+lock_wait_timeout   = 60
+bind-address        = 0.0.0.0
